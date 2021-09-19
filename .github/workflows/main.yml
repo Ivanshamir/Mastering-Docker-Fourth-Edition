@@ -22,13 +22,12 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Build and tag image
-#         run: docker build -t "docker.pkg.github.com/$(echo$GITHUB_REPOSITORY | tr '[:upper:]' '[:lower:]')/multi-
-# stage:$GITHUB_RUN_NUMBER" -f ./chapter02/multi-stage/Dockerfile./chapter02/multi-stage/
+        run: docker build -t "docker.pkg.github.com/$(echo$GITHUB_REPOSITORY | tr '[:upper:]' '[:lower:]')/multi-stage:$GITHUB_RUN_NUMBER" -f ./chapter02/multi-stage/Dockerfile./chapter02/multi-stage/
 
-#       - name: Docker login
-#         run: docker login docker.pkg.github.com -u $GITHUB_ACTOR -p $GITHUB_TOKEN
-#         env:
-#           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: Docker login
+        run: docker login docker.pkg.github.com -u $GITHUB_ACTOR -p $GITHUB_TOKEN
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           
-#       - name: Publish to GPR
-#         run: docker push "docker.pkg.github.com/$(echo $GITHUB_REPOSITORY | tr '[:upper:]' '[:lower:]')/multi-stage:$GITHUB_RUN_NUMBER"
+      - name: Publish to GPR
+        run: docker push "docker.pkg.github.com/$(echo $GITHUB_REPOSITORY | tr '[:upper:]' '[:lower:]')/multi-stage:$GITHUB_RUN_NUMBER"
