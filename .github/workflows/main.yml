@@ -25,7 +25,6 @@ jobs:
         run: docker build -t "docker.pkg.github.com/$(echo$GITHUB_REPOSITORY | tr '[:upper:]' '[:lower:]')/multi-
 stage:$GITHUB_RUN_NUMBER" -f ./chapter02/multi-stage/Dockerfile./chapter02/multi-stage/
 
-      # Runs a set of commands using the runners shell
       - name: Docker login
         run: docker login docker.pkg.github.com -u $GITHUB_ACTOR -p $GITHUB_TOKEN
         env:
